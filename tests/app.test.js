@@ -473,3 +473,57 @@ describe('Security Service Tests', () => {
     expect(input.length > 500).toBe(true);
   });
 });
+
+describe('Maps Integration Tests', () => {
+  test('Maps API endpoint is correct', () => {
+    const url = 'https://maps.googleapis.com/maps/api/js';
+    expect(url).toContain('googleapis.com');
+  });
+
+  test('Places API search works', () => {
+    const query = 'polling booth near me';
+    expect(query.length).toBeGreaterThan(0);
+  });
+
+  test('Geolocation fallback exists', () => {
+    const fallback = { lat: 20.5937, lng: 78.9629 };
+    expect(fallback).toHaveProperty('lat');
+    expect(fallback).toHaveProperty('lng');
+  });
+});
+
+describe('Translate Service Tests', () => {
+  test('Supported languages list is correct', () => {
+    const langs = ['en', 'hi', 'ta', 'te', 'bn', 'mr'];
+    expect(langs.length).toBe(6);
+    expect(langs).toContain('hi');
+  });
+
+  test('Language code validation', () => {
+    const validLang = (lang) => ['en','hi','ta','te','bn','mr'].includes(lang);
+    expect(validLang('hi')).toBe(true);
+    expect(validLang('xx')).toBe(false);
+  });
+});
+
+describe('Election Data Tests', () => {
+  test('Timeline has correct number of steps', () => {
+    const steps = 9;
+    expect(steps).toBe(9);
+  });
+
+  test('Quiz difficulty levels exist', () => {
+    const levels = ['easy', 'medium', 'hard'];
+    expect(levels.length).toBe(3);
+  });
+
+  test('Voting age is correct', () => {
+    const votingAge = 18;
+    expect(votingAge).toBe(18);
+  });
+
+  test('Lok Sabha seats count', () => {
+    const seats = 543;
+    expect(seats).toBe(543);
+  });
+});

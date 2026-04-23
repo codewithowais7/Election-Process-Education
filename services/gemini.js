@@ -136,7 +136,9 @@ async function callGemini(userMessage, lang = 'en', conversationHistory = []) {
     } else if (status === 401 || status === 403) {
       throw new Error('API key is invalid or missing. Please configure a valid Gemini API key in services/gemini.js.');
     } else if (status === 429) {
-      throw new Error('Rate limit exceeded. Please wait a moment before trying again.');
+      // Auto retry after 3 seconds
+      await new Promise(r => setTimeout(r, 3000));
+      return callGemini(userMessage, lang, conversationHistory);
     } else if (status >= 500) {
       throw new Error('Google AI service is temporarily unavailable. Please try again later.');
     }
