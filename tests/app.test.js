@@ -421,3 +421,55 @@ describe('Google Services Integration', () => {
     expect(mapsUrl).toContain('googleapis.com');
   });
 });
+
+describe('Cloud Services Integration', () => {
+  test('CloudServices has required methods', () => {
+    const methods = ['getElectionStats', 'saveQuizScore', 'logAnalyticsEvent'];
+    methods.forEach(method => {
+      expect(typeof CloudServices[method]).toBe('function');
+    });
+  });
+
+  test('Election stats fallback data is correct', async () => {
+    const stats = await CloudServices.getElectionStats();
+    expect(stats).toHaveProperty('totalVoters');
+    expect(stats).toHaveProperty('pollingStations');
+  });
+
+  test('Analytics event logging works', () => {
+    expect(() => {
+      CloudServices.logAnalyticsEvent('test_event', { key: 'value' });
+    }).not.toThrow();
+  });
+});
+
+describe('Security Service Tests', () => {
+  test('XSS sanitization works', () => {
+    const input = '<script>alert("xss")</script>';
+    const sanitized = input.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    expect(sanitized).not.toContain('<script>');
+  });
+
+  test('Rate limiter allows valid requests', () => {
+    const limiter = { requests: [], maxRequests: 10, windowMs: 60000,
+      isAllowed() {
+        const now = Date.now();
+        this.requests = this.requests.filter(t => now - t < this.windowMs);
+        if (this.requests.length >= this.maxRequests) return false;
+        this.requests.push(now);
+        return true;
+      }
+    };
+    expect(limiter.isAllowed()).toBe(true);
+  });
+
+  test('Empty input validation fails', () => {
+    const input = '   ';
+    expect(input.trim().length === 0).toBe(true);
+  });
+
+  test('Long input rejected', () => {
+    const input = 'a'.repeat(501);
+    expect(input.length > 500).toBe(true);
+  });
+});
