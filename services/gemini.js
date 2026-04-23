@@ -6,7 +6,7 @@
 const GEMINI_CONFIG = {
   // Replace with your actual Gemini API key
   API_KEY: 'AIzaSyDwpMJu691InEkADA2ZnKD10e4NtYoQUh0',
-  MODEL: 'gemini-1.5-flash',
+  MODEL: 'gemini-2.0-flash',
   ENDPOINT_BASE: 'https://generativelanguage.googleapis.com/v1beta/models',
   MAX_TOKENS: 600,
   TEMPERATURE: 0.7,
