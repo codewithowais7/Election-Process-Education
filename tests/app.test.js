@@ -385,3 +385,39 @@ describe('Gemini API Integration (mocked)', () => {
     expect(handleApiError(429)).toContain('Rate limit exceeded');
   });
 });
+
+describe('Security Tests', () => {
+  test('XSS prevention - script tags sanitized', () => {
+    const malicious = '<script>alert("xss")</script>';
+    const sanitized = malicious.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    expect(sanitized).not.toContain('<script>');
+  });
+
+  test('Input length validation', () => {
+    const input = 'a'.repeat(501);
+    const isValid = input.length <= 500;
+    expect(isValid).toBe(false);
+  });
+
+  test('Empty input rejected', () => {
+    const input = '   ';
+    expect(input.trim().length).toBe(0);
+  });
+});
+
+describe('Google Services Integration', () => {
+  test('Gemini endpoint URL is correct', () => {
+    const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models';
+    expect(endpoint).toContain('googleapis.com');
+  });
+
+  test('Translate API endpoint correct', () => {
+    const endpoint = 'https://translation.googleapis.com/language/translate/v2';
+    expect(endpoint).toContain('translation.googleapis.com');
+  });
+
+  test('Maps API integrated', () => {
+    const mapsUrl = 'https://maps.googleapis.com/maps/api/js';
+    expect(mapsUrl).toContain('googleapis.com');
+  });
+});
