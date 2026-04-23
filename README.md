@@ -65,7 +65,7 @@ election-edu-assistant/
 ## 🔧 Tech Stack
 
 - **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+ — no frameworks)
-- **AI**: Google Gemini 1.5 Flash API (REST via `fetch`)
+- **AI**: Google Gemini 2.0 Flash API (REST via `fetch`)
 - **Maps**: Google Maps JavaScript API + Places API + Geometry Library
 - **Translation**: Google Cloud Translation API v2 (batched, cached)
 - **TTS**: Web Speech API (browser-native, no external dependency)
