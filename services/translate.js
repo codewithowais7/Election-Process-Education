@@ -5,7 +5,7 @@
 
 const TRANSLATE_CONFIG = {
   // Replace with your actual Cloud Translation API key
-  API_KEY: 'YOUR_TRANSLATE_API_KEY',
+  API_KEY: 'AIzaSyCVo7QV_K4sSlSTfImXdXDUUl-ipHn7-RY',
   ENDPOINT: 'https://translation.googleapis.com/language/translate/v2',
   // Supported languages
   LANGUAGES: {
