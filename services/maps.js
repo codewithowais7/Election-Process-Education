@@ -5,7 +5,7 @@
 
 const MAPS_CONFIG = {
   // Replace with your actual Maps API key
-  API_KEY: 'YOUR_MAPS_API_KEY',
+  API_KEY: 'AIzaSyAeYI7ySvvcLrTYodGFxyldHJT8LuESl0U',
   DEFAULT_CENTER: { lat: 20.5937, lng: 78.9629 }, // India center
   DEFAULT_ZOOM: 5,
   SEARCH_RADIUS: 2000, // metres
