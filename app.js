@@ -7,6 +7,16 @@
  */
 
 'use strict';
+// Initialize Google Cloud Services
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.CloudServices) {
+    window.CloudServices.logAnalyticsEvent('app_loaded', { version: '1.0.0' });
+    window.CloudServices.getElectionStats().then(stats => {
+      console.log('[VoteWise] Election Stats loaded:', stats);
+    });
+  }
+  if (window.Security) window.Security.addSecurityMeta && window.Security.addSecurityMeta();
+});
 
 // ===== APP STATE =====
 const AppState = {

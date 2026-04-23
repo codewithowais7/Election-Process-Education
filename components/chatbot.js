@@ -20,6 +20,11 @@ async function sendMessage() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
   if (!text) {
+    // Security validation
+    if (window.Security && !window.Security.validateInput(text)) { input.focus(); return; }
+    if (window.Security && !window.Security.rateLimiter.isAllowed()) { alert("Too many requests. Wait a moment."); return; }
+    if (window.Analytics) window.Analytics.trackChatQuestion(text);
+    if (window.CloudServices) window.CloudServices.logAnalyticsEvent("chat_message", {lang: window.currentLang});
     input.focus();
     return;
   }
