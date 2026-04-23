@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Learn about the election process with AI-powered education assistant — VoteWise by Hack2Skill"/>
+  <meta name="theme-color" content="#1a3a6e"/>
+  <title>VoteWise — Election Process Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Google Maps loaded dynamically in maps.js -->
+</head>
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-inner">
+      <div class="logo" aria-label="VoteWise Home">
+        <span class="logo-icon" aria-hidden="true">🗳️</span>
+        <span class="logo-text">VoteWise</span>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <button class="nav-btn active" data-tab="home" aria-current="page" id="nav-home">Home</button>
+        <button class="nav-btn" data-tab="chat" id="nav-chat">AI Assistant</button>
+        <button class="nav-btn" data-tab="quiz" id="nav-quiz">Quiz</button>
+        <button class="nav-btn" data-tab="map" id="nav-map">Find Polling</button>
+        <button class="nav-btn" data-tab="timeline" id="nav-timeline">Election Timeline</button>
+      </nav>
+      <!-- Language Selector -->
+      <div class="lang-selector">
+        <label for="language" class="sr-only">Select Language</label>
+        <select id="language" aria-label="Select language">
+          <option value="en">🇬🇧 English</option>
+          <option value="hi">🇮🇳 Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="te">Telugu</option>
+          <option value="bn">Bengali</option>
+          <option value="mr">Marathi</option>
+        </select>
+      </div>
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+    <!-- HOME TAB -->
+    <section id="tab-home" class="tab-section active" aria-labelledby="home-heading">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="hero-badge">🏅 Hack2Skill Hackathon 2026</span>
+          <h1 id="home-heading">
+            <span class="hero-eyebrow">Your Voice Matters</span>
+            Understand the<br/><em>Election Process</em>
+          </h1>
+          <p class="hero-sub">AI-powered civic education to make every Indian citizen an informed voter. Learn, explore, and participate in democracy — powered by Google Gemini.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="switchTab('chat')" id="hero-chat-btn">
+              <span class="btn-icon">🤖</span>
+              <span>Ask AI Assistant</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="btn-secondary" onclick="switchTab('quiz')" id="hero-quiz-btn">
+              <span class="btn-icon">📝</span>
+              <span>Take the Quiz</span>
+            </button>
+          </div>
+          <div class="hero-stats" aria-label="Platform statistics">
+            <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">Quiz Questions</span></div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Languages</span></div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">Timeline Steps</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-card card-1">
+            <div class="vc-dot green"></div>
+            <span>Voter Registration</span>
+            <span class="vc-tag">✓ Done</span>
+          </div>
+          <div class="ballot-box-wrap">
+            <div class="ballot-box">
+              <div class="ballot-slot"></div>
+              <div class="ballot-paper animate-float">✓</div>
+            </div>
+            <div class="pulse-ring"></div>
+          </div>
+          <div class="visual-card card-2">
+            <div class="vc-dot orange"></div>
+            <span>Voting Day</span>
+            <span class="vc-tag">June 15</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="section-header">
+        <h2>Everything You Need to Vote Informed</h2>
+        <p>Six powerful tools to understand India's democratic process</p>
+      </div>
+      <div class="features-grid" role="list">
+        <article class="feature-card" role="listitem" tabindex="0" onclick="switchTab('chat')">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">🤖</div>
+          </div>
+          <h3>AI Chatbot</h3>
+          <p>Ask anything about voting, elections, and your rights — powered by Google Gemini 1.5 Pro</p>
+          <span class="feature-link">Try it →</span>
+        </article>
+        <article class="feature-card" role="listitem" tabindex="0" onclick="switchTab('map')">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">📍</div>
+          </div>
+          <h3>Find Polling Booth</h3>
+          <p>Locate nearest polling stations using Google Maps with live directions and real-time search</p>
+          <span class="feature-link">Find now →</span>
+        </article>
+        <article class="feature-card" role="listitem" tabindex="0" onclick="switchTab('quiz')">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">📝</div>
+          </div>
+          <h3>Knowledge Quiz</h3>
+          <p>Test your understanding of the democratic process with 30+ adaptive questions across 3 levels</p>
+          <span class="feature-link">Start quiz →</span>
+        </article>
+        <article class="feature-card" role="listitem" tabindex="0" onclick="switchTab('timeline')">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">🗓️</div>
+          </div>
+          <h3>Election Timeline</h3>
+          <p>Interactive step-by-step visual guide to India's complete election process</p>
+          <span class="feature-link">Explore →</span>
+        </article>
+        <article class="feature-card" role="listitem" tabindex="0">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">🌐</div>
+          </div>
+          <h3>Multi-Language</h3>
+          <p>Available in 6 Indian languages via Google Cloud Translation API — Hindi, Tamil, Telugu & more</p>
+          <span class="feature-link">Select language ↑</span>
+        </article>
+        <article class="feature-card" role="listitem" tabindex="0">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <div class="feature-icon">🔊</div>
+          </div>
+          <h3>Voice Support</h3>
+          <p>Listen to AI explanations with Web Speech API text-to-speech for enhanced accessibility</p>
+          <span class="feature-link">Enable in chat ↗</span>
+        </article>
+      </div>
+
+      <!-- Info Banner -->
+      <div class="info-banner" role="complementary" aria-label="Official resources">
+        <span class="info-banner-icon" aria-hidden="true">ℹ️</span>
+        <p>Official Resources: 
+          <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer">Election Commission of India</a> · 
+          <a href="https://voterportal.eci.gov.in" target="_blank" rel="noopener noreferrer">Voter Portal</a> · 
+          <a href="https://nvsp.in" target="_blank" rel="noopener noreferrer">NVSP.in</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- CHAT TAB -->
+    <section id="tab-chat" class="tab-section" aria-labelledby="chat-heading" hidden>
+      <div class="chat-layout">
+        <aside class="chat-sidebar" aria-label="Chat sidebar">
+          <div class="sidebar-brand">
+            <span class="sidebar-avatar" aria-hidden="true">🤖</span>
+            <div>
+              <h2 id="chat-heading">VoteWise AI</h2>
+              <p class="sidebar-sub">Powered by Google Gemini</p>
+            </div>
+          </div>
+          <div class="sidebar-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Online · Ready to help</span>
+          </div>
+
+          <div class="quick-questions" aria-label="Quick question suggestions">
+            <p class="sidebar-label">💬 Quick Questions</p>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-1">How do I register to vote?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-2">What is EVM?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-3">Who is eligible to vote?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-4">What documents do I need?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-5">How does vote counting work?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-6">What is Model Code of Conduct?</button>
+            <button class="quick-q" onclick="askQuick(this)" id="qq-7">How to check my name in voter list?</button>
+          </div>
+
+          <div class="sidebar-links">
+            <p class="sidebar-label">🔗 Official Links</p>
+            <a href="https://voterportal.eci.gov.in" target="_blank" rel="noopener noreferrer" class="sidebar-link">Voter Portal</a>
+            <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer" class="sidebar-link">ECI Website</a>
+          </div>
+        </aside>
+
+        <div class="chat-main">
+          <div class="chat-topbar">
+            <span class="chat-topbar-title">Election Education Assistant</span>
+            <button class="icon-btn" id="clear-chat-btn" aria-label="Clear chat history" title="Clear chat" onclick="clearChat()">🗑️</button>
+          </div>
+          <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
+            <!-- Initial welcome message -->
+            <div class="message bot-message" role="article" aria-label="Assistant welcome message">
+              <div class="message-avatar" aria-hidden="true">🤖</div>
+              <div class="message-bubble">
+                <p>Namaste! 🙏 I'm <strong>VoteWise AI</strong>, your election education assistant powered by Google Gemini.</p>
+                <p style="margin-top:8px">I can help you understand:</p>
+                <ul>
+                  <li>🗳️ Voter registration process (Form 6, 6A, 7, 8)</li>
+                  <li>⚡ How EVMs and VVPATs work</li>
+                  <li>📜 Your rights as a voter</li>
+                  <li>🏛️ Election Commission of India rules</li>
+                  <li>📍 How to find your polling booth</li>
+                  <li>🤔 NOTA, postal ballots, and more</li>
+                </ul>
+                <p style="margin-top:8px">Ask me anything! 🗳️</p>
+                <div class="message-time" aria-hidden="true">Just now</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-area" role="form" aria-label="Send a message">
+            <div class="input-row">
+              <button id="voice-input-btn" class="icon-btn" aria-label="Use voice input" title="Voice Input (click to start)">🎤</button>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="chat-input" 
+                  placeholder="Ask about elections, voting, your rights..." 
+                  aria-label="Type your election-related question"
+                  autocomplete="off"
+                  maxlength="500"
+                />
+                <span id="char-count" class="char-count" aria-live="polite" aria-atomic="true">0/500</span>
+              </div>
+              <button id="send-btn" class="btn-primary send-btn" aria-label="Send message" onclick="sendMessage()">
+                <span class="send-icon" aria-hidden="true">↑</span>
+              </button>
+            </div>
+            <div class="input-options">
+              <label class="tts-toggle" for="tts-enabled">
+                <input type="checkbox" id="tts-enabled" />
+                <span class="toggle-track" aria-hidden="true"></span>
+                🔊 Read responses aloud
+              </label>
+              <span class="input-hint" aria-hidden="true">Press Enter to send</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ TAB -->
+    <section id="tab-quiz" class="tab-section" aria-labelledby="quiz-heading" hidden>
+      <div class="quiz-container">
+        <div class="quiz-header-section">
+          <h2 id="quiz-heading">Test Your Election IQ</h2>
+          <p>30+ questions across 3 difficulty levels — from basics to expert constitutional law</p>
+        </div>
+
+        <div id="quiz-start" class="quiz-start">
+          <div class="difficulty-cards">
+            <button class="diff-card" data-level="easy" onclick="startQuiz('easy')" id="diff-easy">
+              <div class="diff-icon">🟢</div>
+              <div class="diff-label">Beginner</div>
+              <div class="diff-desc">Basic voting rights, EVM, voter ID — perfect for first-time voters</div>
+              <div class="diff-count">10 questions</div>
+            </button>
+            <button class="diff-card featured" data-level="medium" onclick="startQuiz('medium')" id="diff-medium">
+              <div class="diff-badge">Popular</div>
+              <div class="diff-icon">🟡</div>
+              <div class="diff-label">Intermediate</div>
+              <div class="diff-desc">Election laws, security deposits, anti-defection, and MCC</div>
+              <div class="diff-count">10 questions</div>
+            </button>
+            <button class="diff-card" data-level="hard" onclick="startQuiz('hard')" id="diff-hard">
+              <div class="diff-icon">🔴</div>
+              <div class="diff-label">Advanced</div>
+              <div class="diff-desc">Constitutional amendments, RPA 1951, electoral bonds, PUCL case</div>
+              <div class="diff-count">10 questions</div>
+            </button>
+          </div>
+        </div>
+
+        <div id="quiz-game" class="quiz-game" hidden>
+          <div class="quiz-progress-bar">
+            <div class="quiz-meta">
+              <span id="question-counter" aria-live="polite" aria-atomic="true">Question 1 of 10</span>
+              <span id="quiz-difficulty-label" class="diff-tag"></span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Quiz progress">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+          </div>
+          <div class="quiz-score-bar">
+            <div class="score-display" aria-live="polite" aria-atomic="true">
+              <span class="score-icon" aria-hidden="true">⭐</span>
+              Score: <span id="score">0</span>/<span id="total-q">10</span>
+            </div>
+            <button class="btn-ghost" onclick="resetQuiz()" aria-label="Quit quiz">✕ Quit</button>
+          </div>
+
+          <div id="question-box" class="question-box" role="region" aria-live="polite" aria-label="Current question">
+            <p id="question-text" class="question-text"></p>
+            <div id="options-grid" class="options-grid" role="group" aria-label="Answer choices"></div>
+          </div>
+
+          <div id="feedback-box" class="feedback-box" aria-live="assertive" hidden></div>
+          <div class="quiz-actions">
+            <button id="next-btn" class="btn-primary next-btn" hidden onclick="nextQuestion()">
+              Next Question <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="quiz-results" class="quiz-results" hidden>
+          <div id="results-content" class="results-content"></div>
+          <div class="results-actions">
+            <button class="btn-primary" onclick="resetQuiz()" id="try-again-btn">🔄 Try Again</button>
+            <button class="btn-secondary" onclick="switchTab('chat')" id="learn-more-btn">🤖 Learn More with AI</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP TAB -->
+    <section id="tab-map" class="tab-section" aria-labelledby="map-heading" hidden>
+      <div class="map-layout">
+        <div class="map-controls" role="complementary" aria-label="Polling booth search controls">
+          <h2 id="map-heading">Find Your Polling Booth</h2>
+          <p class="map-sub">Search for nearby polling stations or government offices in your constituency</p>
+
+          <div class="search-group">
+            <label for="location-input" class="sr-only">Enter your address</label>
+            <div class="search-input-wrap">
+              <span class="search-icon" aria-hidden="true">📍</span>
+              <input 
+                type="text" 
+                id="location-input" 
+                placeholder="Enter address or constituency..."
+                aria-label="Enter your address to find polling booths"
+                autocomplete="street-address"
+              />
+            </div>
+            <button class="btn-primary full-width" onclick="searchPollingBooths()" id="search-booth-btn" aria-label="Search for polling booths near this address">
+              🔍 Search Polling Booths
+            </button>
+          </div>
+
+          <div class="divider-or"><span>or</span></div>
+
+          <button class="btn-secondary full-width" onclick="useMyLocation()" id="use-location-btn" aria-label="Use my current GPS location to find nearby polling booths">
+            🛰️ Use My Current Location
+          </button>
+
+          <div id="booth-list" class="booth-list" role="list" aria-label="Nearby polling booths" aria-live="polite">
+            <div class="booth-placeholder">
+              <div class="booth-ph-icon" aria-hidden="true">🗺️</div>
+              <p>Search for an address or use your location to discover nearby polling stations</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-wrapper">
+          <div id="map-loading" class="map-loading" aria-live="polite">
+            <div class="map-loading-inner">
+              <div class="spinner-map" aria-hidden="true"></div>
+              <p>Loading Google Maps...</p>
+            </div>
+          </div>
+          <div id="google-map" class="google-map" role="application" aria-label="Google Maps showing polling booths near you"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE TAB -->
+    <section id="tab-timeline" class="tab-section" aria-labelledby="timeline-heading" hidden>
+      <div class="timeline-container">
+        <div class="timeline-header-section">
+          <h2 id="timeline-heading">India's Election Process</h2>
+          <p>Step-by-step visual journey from announcement to government formation</p>
+        </div>
+
+        <div class="timeline" role="list">
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 1: Election Announcement">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">1</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Election Announcement</h3>
+                <span class="timeline-tag">~60 days before voting</span>
+              </div>
+              <p>Election Commission announces the election schedule at a press conference. The Model Code of Conduct (MCC) comes into force <em>immediately</em> on announcement — restricting government expenditure, transfers, and political promises.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">📋 MCC Enforced</span>
+                <span class="detail-chip">📅 Schedule Released</span>
+                <span class="detail-chip">🔒 Transfers Frozen</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 2: Voter List Finalization">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">2</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Voter List Finalization</h3>
+                <span class="timeline-tag">~45 days before voting</span>
+              </div>
+              <p>Final electoral rolls published. Citizens can check their name, correct details, and verify booth assignment at <a href="https://voterportal.eci.gov.in" target="_blank" rel="noopener noreferrer">voterportal.eci.gov.in</a>. Booth Level Officers deployed for any corrections.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">📜 Electoral Rolls Published</span>
+                <span class="detail-chip">🔍 Voter Search Enabled</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 3: Nomination Filing">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">3</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Nomination Filing</h3>
+                <span class="timeline-tag">~30 days before voting</span>
+              </div>
+              <p>Candidates file nomination papers with the Returning Officer (RO). Lok Sabha candidates must deposit ₹25,000 (₹12,500 for SC/ST). Affidavits disclosing criminal records, assets, and liabilities are mandatory.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">💰 ₹25,000 Deposit</span>
+                <span class="detail-chip">📄 Affidavit Required</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 4: Scrutiny and Withdrawal">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">4</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Scrutiny &amp; Withdrawal</h3>
+                <span class="timeline-tag">~25 days before voting</span>
+              </div>
+              <p>Nominations are scrutinized by the RO. Candidates may withdraw within the withdrawal deadline. Final candidate list published with election symbols — each candidate assigned a unique symbol.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">🔎 Nominations Verified</span>
+                <span class="detail-chip">🏳️ Symbols Assigned</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 5: Campaign Period">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">5</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Campaign Period</h3>
+                <span class="timeline-tag">~20 days</span>
+              </div>
+              <p>Candidates campaign through rallies, door-to-door canvassing, print and electronic media. Expenditure limits apply (₹95 lakh for Lok Sabha). All campaign material must show authorization. Cash distribution is illegal.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">📢 Rallies Allowed</span>
+                <span class="detail-chip">💸 Expense Limit ₹95L</span>
+                <span class="detail-chip">📺 Media Ads Regulated</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 6: Silent Period">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">6</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>🤫 Silent Period</h3>
+                <span class="timeline-tag timeline-tag-warning">48 hours before polling</span>
+              </div>
+              <p>All election campaigns, rallies, and political advertisements are completely banned in the 48 hours before polling begins. No exit polls may be published. Liquor ban often enforced by state governments.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">🚫 Campaigns Banned</span>
+                <span class="detail-chip">📊 No Exit Polls</span>
+                <span class="detail-chip">🍺 Liquor Ban</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item highlight" role="listitem" tabindex="0" aria-label="Step 7: Voting Day — The Main Event">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot highlight-dot" aria-hidden="true">7</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>🗳️ Voting Day</h3>
+                <span class="timeline-tag timeline-tag-accent">THE BIG DAY</span>
+              </div>
+              <p>Polling booths open <strong>7 AM – 6 PM</strong>. Voters cast ballots using the EVM (Electronic Voting Machine) with VVPAT (paper audit trail) for verification. Voter ID card or any of 12 approved photo ID documents accepted.</p>
+              <div class="timeline-details">
+                <span class="detail-chip chip-accent">⏰ 7 AM – 6 PM</span>
+                <span class="detail-chip chip-accent">🖥️ EVM + VVPAT</span>
+                <span class="detail-chip chip-accent">🪪 Voter ID Required</span>
+                <span class="detail-chip chip-accent">🖊️ Indelible Ink Applied</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item" role="listitem" tabindex="0" aria-label="Step 8: Vote Counting">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <div class="timeline-dot" aria-hidden="true">8</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Vote Counting</h3>
+                <span class="timeline-tag">Counting day</span>
+              </div>
+              <p>EVMs are unsealed at designated counting centres under the observation of candidates' counting agents and ECI officials. Results are declared round by round, constituency-by-constituency. Candidates with the highest votes (FPTP) win.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">🔓 EVMs Opened</span>
+                <span class="detail-chip">📊 Round-by-Round</span>
+                <span class="detail-chip">👁️ Observed</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item last-item" role="listitem" tabindex="0" aria-label="Step 9: Results and Government Formation">
+            <div class="timeline-dot" aria-hidden="true">9</div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <h3>Results &amp; Government Formation</h3>
+                <span class="timeline-tag">Post-results</span>
+              </div>
+              <p>Winning candidates receive Election Certificate from RO. Party or coalition with majority (272+ seats in Lok Sabha) is invited by President to form government. Cabinet appointed, PM takes oath of office.</p>
+              <div class="timeline-details">
+                <span class="detail-chip">🏆 Winners Certified</span>
+                <span class="detail-chip">🤝 Coalition Talks</span>
+                <span class="detail-chip">🙏 Oath of Office</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span aria-hidden="true">🗳️</span>
+        <strong>VoteWise</strong>
+      </div>
+      <p class="footer-desc">Election Process Education AI Assistant · Built for Hack2Skill 2026 · Powered by Google Gemini, Maps &amp; Translate</p>
+      <div class="footer-links">
+        <a href="https://eci.gov.in" target="_blank" rel="noopener noreferrer">Election Commission of India</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://voterportal.eci.gov.in" target="_blank" rel="noopener noreferrer">Voter Portal</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://nvsp.in" target="_blank" rel="noopener noreferrer">NVSP</a>
+      </div>
+      <p class="footer-disclaimer">This is an educational tool. For official voter information, visit eci.gov.in</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="components/quiz.js"></script>
+  <script src="components/timeline.js"></script>
+  <script src="services/gemini.js"></script>
+  <script src="services/maps.js"></script>
+  <script src="services/translate.js"></script>
+  <script src="components/chatbot.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
